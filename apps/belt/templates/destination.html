@@ -1,0 +1,19 @@
+<head>
+</head>
+<body>
+  {% for des in destination %}
+    <h1> Destination: {{ des.destination }}<h1>
+    <h2> Description: </h2>
+    <h3> {{ des.description }}</h3>
+    <h3> Start Date: {{ des.startdate }}</h3>
+    <h3> End Date: {{ des.enddate }}</h3>
+    <h4>Who is going:</h4>
+    <p> {{ des.user.first_name }} {{ des.user.last_name }}</p>
+  {% endfor %}
+  {% for user in other %}
+    <p> {{ user.adduser.first_name }} {{ user.adduser.last_name }}</p>
+  {% endfor%}
+  <a href = '/'>Logout</a>
+  <a href = '/travels'>Home</a>
+
+</body>

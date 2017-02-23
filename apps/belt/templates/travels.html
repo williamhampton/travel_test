@@ -1,0 +1,54 @@
+<head>
+</head>
+<body>
+  <h1> Travel plans </h1>
+  <table>
+    <tr>
+      <th> Destination</th>
+      <th> Description </th>
+      <th> Start Date </th>
+      <th> End Date </th>
+      <th> Organized by </th>
+    </tr>
+    {% for plan in plans %}
+      <tr>
+        <td>{{ plan.destination }}</td>
+        <td>{{ plan.description }}</td>
+        <td>{{ plan.startdate }}</td>
+        <td>{{ plan.enddate }}</td>
+        <td>{{ plan.user.first_name}} {{ plan.user.last_name }}</td>
+      </tr>
+    {% endfor %}
+    {% for joinedplan in joinedplans %}
+    <tr>
+      <td><a href = '/travels/destination/{{joinedplan.addtravel.id}}'>{{ joinedplan.addtravel.destination }}</a></td>
+      <td>{{ joinedplan.addtravel.description }}</td>
+      <td>{{ joinedplan.addtravel.startdate }}</td>
+      <td>{{ joinedplan.addtravel.enddate }}</td>
+      <td>{{ joinedplan.addtravel.user.first_name}} {{ joinedplan.addtravel.user.last_name }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <h2>All Travel Plans</h2>
+  <table>
+    <tr>
+      <th> Destination</th>
+      <th> Description </th>
+      <th> Start Date </th>
+      <th> End Date </th>
+      <th> Organized by </th>
+    </tr>
+  {% for travel in travels %}
+  <tr>
+    <td><a href = '/travels/destination/{{travel.id}}'>{{ travel.destination }}</a></td>
+    <td>{{ travel.description }}</td>
+    <td>{{ travel.startdate }}</td>
+    <td>{{ travel.enddate }}</td>
+    <td>{{ travel.user.first_name}} {{ travel.user.last_name }}</td>
+    <td><a href = '/join/{{ travel.id }}'> Join</a>
+  </tr>
+  {% endfor %}
+</table>
+<a href = '/travels/add'>Add Travel Plans</a>
+<a href = '/'>Logout</a>
+<body>
